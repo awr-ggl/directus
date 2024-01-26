@@ -15,7 +15,6 @@ coverage/
 
 # Dotenv configs
 .env
-.env.*
 
 # Logs
 npm-debug.log
@@ -50,3 +49,8 @@ TODO
 /tests/blackbox/sequencer-data.json
 /packages/extensions-sdk/temp-extension-*/
 /docs/packages/
+
+# Docker directory
+
+uploads
+extensions
