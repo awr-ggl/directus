@@ -44,6 +44,7 @@ TODO
 /schema.yaml
 /schema.json
 /api/uploads/
+/api/keys/
 /tests/blackbox/uploads/
 /tests/blackbox/server-log-*
 /tests/blackbox/sequencer-data.json
