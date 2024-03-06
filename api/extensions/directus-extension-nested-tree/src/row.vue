@@ -9,7 +9,7 @@ type PropsType = {
   item: Item;
   collection: string;
   primaryKeyField: string;
-  childrenField?: string;
+  childrenField: string;
 };
 const props = defineProps<PropsType>();
 

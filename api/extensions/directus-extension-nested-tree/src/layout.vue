@@ -20,10 +20,10 @@ const props = defineProps<PropsType>();
 
 const nestedTopLevelItems = computed(() => {
   const nestedItems = convertToNestedItems(
-    props.items,
+    props.items ?? [],
     props.primaryKeyField.field,
-    props.layoutOptions.parentField,
-    props.layoutOptions.childrenField,
+    props.layoutOptions.parentField ?? "parent_id",
+    props.layoutOptions.childrenField ?? "children",
   );
   return nestedItems;
 });
