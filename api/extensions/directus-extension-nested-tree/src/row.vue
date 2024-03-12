@@ -8,6 +8,7 @@ type PropsType = {
   primaryKeyField: string;
   childrenField: string;
   textClickHandler: ({ item, event }: { item: Item, event: PointerEvent }) => void,
+	isSelectedFn: (primaryKey: any) => boolean,
 };
 const props = defineProps<PropsType>();
 </script>
@@ -15,7 +16,7 @@ const props = defineProps<PropsType>();
 <template>
   <li>
     <button @click="textClickHandler({ item: props.item, event: $event })">
-      <span>{{ props.item.name }}</span>
+      <span :class="props.isSelectedFn(props.item.id) ? 'selected' : null">{{ props.item.name }}</span>
 		</button>
     <ul v-if="props.item[props.childrenField].length > 0">
       <Self
@@ -26,7 +27,14 @@ const props = defineProps<PropsType>();
         :primary-key-field="props.primaryKeyField"
         :children-field="props.childrenField"
         :text-click-handler="handleClick"
+        :is-selected-fn="isSelectedFn"
       />
     </ul>
   </li>
 </template>
+
+<style lang="css" scoped>
+.selected {
+  text-decoration: underline;
+}
+</style>

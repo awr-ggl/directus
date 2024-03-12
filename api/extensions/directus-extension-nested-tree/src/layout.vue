@@ -2,9 +2,11 @@
 import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { Item, Field } from "@directus/types";
+import type { ShowSelect } from "@directus/extensions";
 import { LayoutOptions } from "./types";
 import Row from "./row.vue";
 import { convertToNestedItems } from "./functions";
+import { useSync } from "@directus/extensions-sdk";
 
 const router = useRouter();
 
@@ -18,8 +20,21 @@ type PropsType = {
   collection: string;
   items?: Item[];
   loading: boolean;
+  showSelect?: ShowSelect;
+  selectMode: boolean;
+  selection?: Item[];
 };
-const props = defineProps<PropsType>();
+
+const props = withDefaults(defineProps<PropsType>(), {
+  layoutOptions: (): LayoutOptions => {
+    return {
+      parentField: "parent_category_id",
+      childrenField: "subcategories",
+    };
+  },
+  showSelect: 'none',
+  selection: () => [],
+});
 
 const nestedTopLevelItems = computed(() => {
   const nestedItems = convertToNestedItems(
@@ -30,6 +45,13 @@ const nestedTopLevelItems = computed(() => {
   );
   return nestedItems;
 });
+
+const isSelectedFn = (primaryKey: any): boolean => {
+	return props.selection.indexOf(primaryKey) >= 0;
+};
+
+const emit = defineEmits(['update:selection']);
+const selection = useSync(props, 'selection', emit);
 
 const handleClick = ({ item, event }: { item: Item; event: PointerEvent }): void => {
   const primaryKey = item[props.primaryKeyField.field];
@@ -63,6 +85,7 @@ const handleClick = ({ item, event }: { item: Item; event: PointerEvent }): void
         :primary-key-field="props.primaryKeyField.field"
         :children-field="props.layoutOptions.childrenField"
         :text-click-handler="handleClick"
+        :is-selected-fn="isSelectedFn"
       />
     </ul>
   </div>
