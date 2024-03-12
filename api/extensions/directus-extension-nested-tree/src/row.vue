@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import { Item } from "@directus/types";
 import Self from "./row.vue";
-
-const router = useRouter();
 
 type PropsType = {
   item: Item;
   collection: string;
   primaryKeyField: string;
   childrenField: string;
+  textClickHandler: ({ item, event }: { item: Item, event: PointerEvent }) => void,
 };
 const props = defineProps<PropsType>();
-
-const handleClick = (id: any) => {
-  router.push(`/content/${props.collection}/${id}`);
-};
 </script>
 
 <template>
   <li>
-    <a @click="handleClick(props.item[props.primaryKeyField])" href="javascript:;">
+    <button @click="textClickHandler({ item: props.item, event: $event })">
       <span>{{ props.item.name }}</span>
-    </a>
+		</button>
     <ul v-if="props.item[props.childrenField].length > 0">
       <Self
         v-for="item in props.item[props.childrenField]"
@@ -31,6 +25,7 @@ const handleClick = (id: any) => {
         :collection="props.collection"
         :primary-key-field="props.primaryKeyField"
         :children-field="props.childrenField"
+        :text-click-handler="handleClick"
       />
     </ul>
   </li>

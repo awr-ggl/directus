@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 import { Item, Field } from "@directus/types";
 import { LayoutOptions } from "./types";
 import Row from "./row.vue";
 import { convertToNestedItems } from "./functions";
+
+const router = useRouter();
 
 defineOptions({
   inheritAttrs: false,
@@ -27,6 +30,26 @@ const nestedTopLevelItems = computed(() => {
   );
   return nestedItems;
 });
+
+const handleClick = ({ item, event }: { item: Item; event: PointerEvent }): void => {
+  const primaryKey = item[props.primaryKeyField.field];
+
+  if (props.showSelect === 'none' || !props.selectMode) {
+    const route = `/content/${props.collection}/${primaryKey}`;
+    if (event.ctrlKey || event.metaKey) {
+      window.open(router.resolve(route).href, '_blank');
+    } else {
+      router.push(route);
+    }
+    return;
+  }
+
+  if (selection.value?.includes(primaryKey) === false) {
+    selection.value = selection.value.concat(primaryKey);
+  } else {
+    selection.value = selection.value.filter((item) => item !== primaryKey);
+  }
+};
 </script>
 
 <template>
@@ -39,6 +62,7 @@ const nestedTopLevelItems = computed(() => {
         :collection="props.collection"
         :primary-key-field="props.primaryKeyField.field"
         :children-field="props.layoutOptions.childrenField"
+        :text-click-handler="handleClick"
       />
     </ul>
   </div>
