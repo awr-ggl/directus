@@ -26,7 +26,7 @@ const props = defineProps<PropsType>();
         :collection="props.collection"
         :primary-key-field="props.primaryKeyField"
         :children-field="props.childrenField"
-        :text-click-handler="handleClick"
+        :text-click-handler="textClickHandler"
         :is-selected-fn="isSelectedFn"
       />
     </ul>
