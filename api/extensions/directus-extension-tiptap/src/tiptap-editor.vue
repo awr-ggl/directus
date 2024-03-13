@@ -361,7 +361,7 @@
 
       <v-button
         v-if="editorExtensions.includes('youtube')"
-        v-tooltip="t('wysiwyg_options.media')"
+        tooltip="Embed YouTube"
         small
         icon
         :disabled="props.disabled || !editor.can().insertContent({ type: 'iframe' })"
@@ -710,7 +710,7 @@
       </template>
     </v-drawer>
 
-    <v-drawer v-model="isEmbedYouTubeDrawerOpen" :title="t('wysiwyg_options.media')" icon="youtube" @cancel="closeEmbedYouTubeDrawer">
+    <v-drawer v-model="isEmbedYouTubeDrawerOpen" title="Embed YouTube" icon="youtube" @cancel="closeEmbedYouTubeDrawer">
       <div class="content tiptap-drawer">
         <div class="grid">
           <div class="field">
