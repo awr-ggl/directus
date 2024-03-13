@@ -10,7 +10,7 @@ services:
     volumes:
       - ./uploads:/directus/uploads
       # If you want to load extensions from the host
-      - ./extensions:/directus/extensions
+      - ./api/extensions:/directus/extensions
     depends_on:
       - cache
     # Environment variables can also be defined in a file (for example `.env`):
