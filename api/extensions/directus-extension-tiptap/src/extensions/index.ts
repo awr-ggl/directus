@@ -14,9 +14,6 @@ import focus, { type FocusProps } from "./focus";
 import task, { type TaskProps } from "./task";
 import table, { type TableProps } from "./table";
 import image, { type ImageProps } from "./image";
-import invisibleCharacters from "./invisible-characters";
-import emoji, { type EmojiProps } from "./emoji";
-import uniqueId, { type UniqueIDProps } from "./unique-id";
 import video from "./video";
 import youtube from "./youtube";
 
@@ -36,9 +33,7 @@ export type ExtensionsProps = {
   TextAlignProps &
   PlaceholderProps &
   FocusProps &
-  CharacterCountProps &
-  EmojiProps &
-  UniqueIDProps;
+  CharacterCountProps
 
 export interface ExtensionMeta<Options extends object = object, Props extends object = object> {
   name: string;
@@ -69,10 +64,6 @@ export const extensionsMeta: ExtensionMeta[] = [
   focus,
   typography,
   characterCount,
-  // pro
-  invisibleCharacters,
-  emoji,
-  uniqueId,
 ];
 
 export async function loadExtensions(props: ExtensionsProps): Promise<Extensions> {

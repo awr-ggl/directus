@@ -66,17 +66,6 @@ dependencies:
     specifier: ^2.1.13
     version: 2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
 
-optionalDependencies:
-  '@tiptap-pro/extension-emoji':
-    specifier: ^2.5.1
-    version: 2.5.1(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)(@tiptap/suggestion@2.1.13)(emojibase@15.3.0)
-  '@tiptap-pro/extension-invisible-characters':
-    specifier: ^2.5.1
-    version: 2.5.1(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
-  '@tiptap-pro/extension-unique-id':
-    specifier: ^2.5.1
-    version: 2.5.1(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
-
 devDependencies:
   '@changesets/changelog-github':
     specifier: ^0.5.0
@@ -1428,50 +1417,6 @@ packages:
   /@sinclair/typebox@0.31.28:
     resolution: {integrity: sha512-/s55Jujywdw/Jpan+vsy6JZs1z2ZTGxTmbZTPiuSL2wz9mfzA2gN1zzaqmvfi4pq+uOt7Du85fkiwv5ymW84aQ==}
     dev: true
-
-  /@tiptap-pro/extension-emoji@2.5.1(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)(@tiptap/suggestion@2.1.13)(emojibase@15.3.0):
-    resolution: {integrity: sha512-D60DzjT/cKuiQ62LUEriHdfCgGtVJqsJx2opKuXQUlYo5cfPM09kEorExOiNb/06drtzSKZegApMU+W3pXyb4Q==}
-    requiresBuild: true
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-      '@tiptap/suggestion': ^2.0.0
-    dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
-      '@tiptap/pm': 2.1.13
-      '@tiptap/suggestion': 2.1.13(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13)
-      emoji-regex: 10.3.0
-      emojibase-data: 7.0.1(emojibase@15.3.0)
-      is-emoji-supported: 0.0.5
-    transitivePeerDependencies:
-      - emojibase
-    dev: false
-    optional: true
-
-  /@tiptap-pro/extension-invisible-characters@2.5.1(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13):
-    resolution: {integrity: sha512-m8P9ahg8txudlLHG8/nEn9UONo1TiOqRMWNYppaJqqjnrPdsScY6NT2JckJWUB9hbh1KO4nkIZZIpGfxjm/SyQ==}
-    requiresBuild: true
-    peerDependencies:
-      '@tiptap/core': ^2.0.0-beta.218
-      '@tiptap/pm': ^2.0.0-beta.218
-    dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
-      '@tiptap/pm': 2.1.13
-    dev: false
-    optional: true
-
-  /@tiptap-pro/extension-unique-id@2.5.1(@tiptap/core@2.1.13)(@tiptap/pm@2.1.13):
-    resolution: {integrity: sha512-H4VG1h9a3vmw1c0WMihD8bYnCXjeTL7DKC2xyJnLEAInd3Z5GjlPGLhua0hYs13hrJ3RzK3SDWl18PFqpu52Kg==}
-    requiresBuild: true
-    peerDependencies:
-      '@tiptap/core': ^2.0.0
-      '@tiptap/pm': ^2.0.0
-    dependencies:
-      '@tiptap/core': 2.1.13(@tiptap/pm@2.1.13)
-      '@tiptap/pm': 2.1.13
-      uuid: 8.3.2
-    dev: false
-    optional: true
 
   /@tiptap/core@2.1.13(@tiptap/pm@2.1.13):
     resolution: {integrity: sha512-cMC8bgTN63dj1Mv82iDeeLl6sa9kY0Pug8LSalxVEptRmyFVsVxGgu2/6Y3T+9aCYScxfS06EkA8SdzFMAwYTQ==}

@@ -370,17 +370,6 @@
         <icons.YouTube />
       </v-button>
 
-      <v-emoji-picker
-        v-if="editorExtensions.includes('emoji')"
-        v-tooltip="t('tiptap.emoji')"
-        :disabled="props.disabled"
-        :x-small="false"
-        :secondary="false"
-        small
-        icon
-        @emoji-selected="emojiSelected"
-      />
-
       <v-menu v-if="editorExtensions.includes('table')" show-arrow placement="bottom-start">
         <template #activator="{ toggle }">
           <v-button
@@ -536,18 +525,6 @@
         @click="editor.chain().focus().setHardBreak().run()"
       >
         <icons.TextWrap />
-      </v-button>
-
-      <v-button
-        v-if="editorExtensions.includes('invisibleCharacters')"
-        v-tooltip="t('tiptap.invisible_characters')"
-        small
-        icon
-        :disabled="props.disabled"
-        :active="editor.storage.invisibleCharacters?.visibility"
-        @click="editor.commands.toggleInvisibleCharacters()"
-      >
-        <icons.InvisibleCharacters />
       </v-button>
 
       <v-button
@@ -1065,8 +1042,6 @@ import task from "./extensions/task";
 import table from "./extensions/table";
 import icons from "./icons";
 import { useImage } from "./composables/image";
-import uniqueId from "./extensions/unique-id";
-import emoji from "./extensions/emoji";
 import { useVideo } from "./composables/video";
 import { useYouTube } from "./composables/youtube";
 
@@ -1197,14 +1172,6 @@ watch(
   () => props.disabled,
   (disabled) => editor.setEditable(!disabled),
 );
-
-const emojiSelected = async (emoji: string) => {
-  const { emojiToShortcode } = await import("@tiptap-pro/extension-emoji");
-  const shortcode = emojiToShortcode(emoji, editor.storage.emoji.emojis);
-  if (shortcode) {
-    editor.chain().focus().setEmoji(shortcode).run();
-  }
-};
 
 onBeforeUnmount(() => {
   editor.destroy();

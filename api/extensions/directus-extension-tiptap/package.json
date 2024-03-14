@@ -100,10 +100,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "optionalDependencies": {
-    "@tiptap-pro/extension-emoji": "^2.5.1",
-    "@tiptap-pro/extension-invisible-characters": "^2.5.1",
-    "@tiptap-pro/extension-unique-id": "^2.5.1"
   }
 }
