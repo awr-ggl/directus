@@ -38,6 +38,15 @@ RUN <<EOF
 	mkdir -p database extensions uploads
 EOF
 
+RUN <<EOF
+	pwd
+	for dir in api/extensions/*; do
+		cd "$dir"
+		pnpm --ignore-workspace install && pnpm run build
+		cd ../../../
+	done
+EOF
+
 ####################################################################################################
 ## Create Production Image
 
@@ -59,6 +68,7 @@ ENV \
 
 COPY --from=builder --chown=node:node /directus/ecosystem.config.cjs .
 COPY --from=builder --chown=node:node /directus/dist .
+COPY --from=builder --chown=node:node /directus/api/extensions ./extensions
 
 CMD : \
 	&& node cli.js bootstrap \

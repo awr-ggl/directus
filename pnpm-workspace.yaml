@@ -6,4 +6,3 @@ packages:
   - sdk
   - packages/*
   - tests/*
-  - api/extensions/*

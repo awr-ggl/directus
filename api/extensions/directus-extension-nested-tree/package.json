@@ -1,0 +1,30 @@
+{
+	"name": "directus-extension-nested-tree",
+	"description": "Nested tree layout for nested collections.",
+	"icon": "extension",
+	"version": "1.0.0",
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-custom-layout"
+	],
+	"type": "module",
+	"directus:extension": {
+		"type": "layout",
+		"path": "dist/index.js",
+		"source": "src/index.ts",
+		"host": "^10.3.0"
+	},
+	"scripts": {
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify",
+		"link": "directus-extension link"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "10.3.0",
+		"@directus/types": "^11.0.3",
+		"typescript": "^5.3.3",
+		"vue": "3.3.13",
+		"vue-router": "^4.2.5"
+	}
+}
