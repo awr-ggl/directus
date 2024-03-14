@@ -74,9 +74,9 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
-    "@directus/extensions-sdk": "workspace:*",
-    "@directus/schema": "workspace:*",
-    "@directus/types": "workspace:*",
+    "@directus/extensions-sdk": "^10.3.0",
+    "@directus/schema": "^11.0.1",
+    "@directus/types": "^11.0.3",
     "@rushstack/eslint-patch": "^1.6.1",
     "@tiptap/vue-3": "^2.1.13",
     "@vue/eslint-config-prettier": "^9.0.0",
@@ -94,7 +94,7 @@
     "vue-i18n": "^9.8.0"
   },
   "peerDependencies": {
-    "@directus/extensions-sdk": "workspace:*",
+    "@directus/extensions-sdk": "^10.2.0",
     "vue": "^3.3.8",
     "vue-i18n": "^9.6.5"
   },
