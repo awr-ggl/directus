@@ -9,6 +9,7 @@ services:
       - 8055:8055
     volumes:
       - ./uploads:/directus/uploads
+      - ./keys:/directus/keys
     depends_on:
       - cache
     # Environment variables can also be defined in a file (for example `.env`):
