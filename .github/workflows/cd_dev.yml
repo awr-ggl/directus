@@ -3,22 +3,14 @@ name: CMS Development Deployment
 on:
   push:
     branches: [ development ]
-env:
-  CHANGE_DIR: cd ${{ secrets.DIRECTORY_PATH }};
 
 jobs:
   dev:
-    runs-on: self-hosted
+    runs-on: biznet-gio
     name: Deploy Development
     steps:
-      - name: Git Pull
-        run: ${{ env.CHANGE_DIR }} sudo git fetch origin; sudo git checkout development && sudo git pull
-
-      - name: Build Docker Image
-        run: ${{ env.CHANGE_DIR }} sudo ./docker-build.sh
-
-      - name: Restart Docker Container
-        run: ${{ env.CHANGE_DIR }} sudo docker compose down && sudo docker compose up -d
+      - name: Deploy with Easypanel
+        run: curl ${{ secrets.DEPLOY_CMS_DEV }} 
 
       - name: Notify Discord
         uses: sarisia/actions-status-discord@v1
